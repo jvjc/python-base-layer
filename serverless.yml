@@ -1,0 +1,22 @@
+service: python-base-dependencies
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-west-2
+
+layers:
+  PythonBaseDependencies:
+    path: layer
+    compatibleRuntimes:
+      - python3.8
+    description: "Base dependencies for python projects"
+
+plugins:
+  - serverless-plugin-scripts
+
+custom:
+  scripts:
+    hooks:
+        'package:initialize': ./install_dependencies.sh
+        'deploy:finalize': rm -rf ./layer/python/*
