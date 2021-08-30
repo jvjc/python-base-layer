@@ -18,5 +18,5 @@ plugins:
 custom:
   scripts:
     hooks:
-        'package:initialize': ./install_dependencies.sh
-        'deploy:finalize': rm -rf ./layer/python/*
+      'package:initialize': ./install_dependencies.sh
+      'deploy:finalize': rm -rf ./layer/python/*
